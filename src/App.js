@@ -1,11 +1,20 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
+
+const GlobalStyle = createGlobalStyle`
+  body{
+    padding: 0;
+    margin: 0;
+  }
+`;
 
 function App() {
   return (
     <Container>
+      <GlobalStyle />
       <Button>Hi</Button>
       <Button danger>Danger</Button>
+      <Anchor href="http://google.com">Go to Google</Anchor>
     </Container>
   );
 }
@@ -29,6 +38,10 @@ const Button = styled.button`
     outline: none;
   }
   background-color: ${props => (props.danger ? "#636e72" : "#fab1a0")};
+`;
+
+const Anchor = styled(Button.withComponent("a"))`
+  text-decoration: none;
 `;
 
 export default App;
